@@ -23,7 +23,7 @@ CREATE TABLE specie_breed (
 CREATE TABLE notification (
     id INT PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(512),
-    date DATE
+    date DATETIME
 );
 CREATE TABLE staff (
     id INT PRIMARY KEY AUTO_INCREMENT,

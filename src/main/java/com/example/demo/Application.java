@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.Date;
+
+
 @SpringBootApplication
 public class Application {
 
@@ -16,7 +19,7 @@ public class Application {
 	@Bean
 	CommandLineRunner commandLineRunner(ManagerRepository managerRepository, ShelterRepository shelterRepository,
 										StaffRepository staffRepository, PetRepository petRepository,
-										SpecieBreedRepository specieBreedRepository){
+										SpecieBreedRepository specieBreedRepository, NotificationRepository notificationRepository){
 		return args ->{
 			System.out.println(managerRepository.getAllManagers());
 			Shelter shelter = new Shelter();
@@ -41,8 +44,12 @@ public class Application {
 			pet.setVaccination(1); // Assuming 1 represents vaccinated and 0 represents not vaccinated
 			pet.setIdOfShelter(1);
 			petRepository.addPet(pet);
-			SpecieBreed specieBreed = new SpecieBreed("Horse", "Arabian Black");
+			SpecieBreed specieBreed = new SpecieBreed("Horse", "Arabian Grey");
 			specieBreedRepository.addSpecieBreed(specieBreed);
+			Notification notification = new Notification();
+			notification.setContent("Sobhan Rabeka Rabb El Ezzate Amma yasefon");
+			notification.setDate(new Date(20230124));
+			notificationRepository.addNotification(notification);
 		};
 	}
 
