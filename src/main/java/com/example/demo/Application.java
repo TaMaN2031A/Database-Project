@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.Model.*;
+import com.example.demo.Model.Record;
 import com.example.demo.Repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +20,8 @@ public class Application {
 	@Bean
 	CommandLineRunner commandLineRunner(ManagerRepository managerRepository, ShelterRepository shelterRepository,
 										StaffRepository staffRepository, PetRepository petRepository,
-										SpecieBreedRepository specieBreedRepository, NotificationRepository notificationRepository){
+										SpecieBreedRepository specieBreedRepository, NotificationRepository notificationRepository,
+										NotificationAdopterRepository notificationAdopterRepository, RecordRepository recordRepository){
 		return args ->{
 			System.out.println(managerRepository.getAllManagers());
 			Shelter shelter = new Shelter();
@@ -44,12 +46,19 @@ public class Application {
 			pet.setVaccination(1); // Assuming 1 represents vaccinated and 0 represents not vaccinated
 			pet.setIdOfShelter(1);
 			petRepository.addPet(pet);
-			SpecieBreed specieBreed = new SpecieBreed("Horse", "Arabian Grey");
+			SpecieBreed specieBreed = new SpecieBreed("Horse", "Arbian Home");
 			specieBreedRepository.addSpecieBreed(specieBreed);
 			Notification notification = new Notification();
 			notification.setContent("Sobhan Rabeka Rabb El Ezzate Amma yasefon");
 			notification.setDate(new Date(20230124));
 			notificationRepository.addNotification(notification);
+			NotificationAdopter notificationAdopter = new NotificationAdopter(3,1);
+			notificationAdopterRepository.addNotificationAdopter(notificationAdopter);
+			Record record = new Record();
+			record.setStatus("Accepted");
+			record.setPetId(4);
+			record.setAdopterId(2);
+			recordRepository.addRecord(record);
 		};
 	}
 

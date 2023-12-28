@@ -9,7 +9,6 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Manager {
-    @Id
     private int ID;
     private String name;
     private String contactInfo;

@@ -12,7 +12,6 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notification {
-    @Id
     private int ID;
     private String content;
     private Date date;
