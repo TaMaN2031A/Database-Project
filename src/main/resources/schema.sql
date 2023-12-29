@@ -81,7 +81,7 @@ CREATE TABLE application (
     pet_id INT,
     adopter_user_name VARCHAR(255),
     FOREIGN KEY (pet_id) REFERENCES pet(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (adopter_user_name) REFERENCES adopter(user_name) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (adopter_user_name) REFERENCES adopter(user_name) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE record (
