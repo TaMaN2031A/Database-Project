@@ -11,5 +11,5 @@ public class App {
     private int id;
     private String status;
     private int petId;
-    private int adopterId;
+    private String adopterUserName;
 }

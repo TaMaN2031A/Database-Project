@@ -15,10 +15,13 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
-    @PostMapping("/addStaff")
-    public ResponseEntity<Map<String, String>> addShelter(@RequestBody Staff staff) {
+    @PostMapping("/add")
+    public ResponseEntity<Map<String, String>> addStaff(@RequestBody Staff staff) {
         return staffService.addStaff(staff);
     }
 
-
+    @PostMapping("/update")
+    public ResponseEntity<Map<String, String>> updateStaff(@RequestBody Staff staff) {
+        return staffService.updateStaff(staff);
+    }
 }

@@ -17,9 +17,9 @@ public class Pet {
     private int gender;
     private String behaviour;
     private String healthStatus;
+    private String description;
     private int neutering;
     private int vaccination;
     private int idOfShelter;
-    private String description;
     private List<PetDocument> petDocuments;
 }

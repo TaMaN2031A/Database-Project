@@ -9,10 +9,11 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Staff {
-    @Id
-    private int ID;
-    private String name;
-    private String contactInfo;
+    private String userName;
+    private String firstName;
+    private String lastName;
     private String role;
+    private String contactInfo;
+    private String password;
     private int idOfShelter;
 }

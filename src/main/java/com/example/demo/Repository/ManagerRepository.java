@@ -15,8 +15,9 @@ public class ManagerRepository {
     public List<Manager> getAllManagers() {
         return jdbcTemplate.query("SELECT * FROM manager", (resultSet, rowNum) ->
                 new Manager(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
+                        resultSet.getString("user_name"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
                         resultSet.getString("password"),
                         resultSet.getString("contact_info")
                 )

@@ -8,15 +8,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+
 @Service
 public class StaffService {
+
     @Autowired
     StaffRepository staffRepository;
-    public ResponseEntity<Map<String, String>> addStaff(Staff staff){
+
+    public ResponseEntity<Map<String, String>> addStaff(Staff staff) {
         try {
             staffRepository.addStaff(staff);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public ResponseEntity<Map<String, String>> updateStaff(Staff staff) {
+        try {
+            staffRepository.updateStaff(staff);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
