@@ -36,17 +36,17 @@ public class Application {
 //			staff.setIdOfShelter(5);
 //			staff.setName("Kimo Tarek");
 //			staffRepository.addStaff(staff);
-//			Pet pet = new Pet();
-//			pet.setName("Fluffy");
-//			pet.setBreed("Breed1");
-//			pet.setAge(3);
-//			pet.setGender(1); // Assuming 1 represents male and 2 represents female
-//			pet.setBehaviour("Friendly");
-//			pet.setHealthState("Good");
-//			pet.setNeutering(1); // Assuming 1 represents neutered and 0 represents not neutered
-//			pet.setVaccination(1); // Assuming 1 represents vaccinated and 0 represents not vaccinated
-//			pet.setIdOfShelter(1);
-//			petRepository.addPet(pet);
+			Pet pet = new Pet();
+			pet.setName("Fluffy");
+			pet.setBreed("Breed1");
+			pet.setAge(3);
+			pet.setGender(1); // Assuming 1 represents male and 2 represents female
+			pet.setBehaviour("Friendly");
+			pet.setHealthState("Good");
+			pet.setNeutering(1); // Assuming 1 represents neutered and 0 represents not neutered
+			pet.setVaccination(1); // Assuming 1 represents vaccinated and 0 represents not vaccinated
+			pet.setIdOfShelter(1);
+			petRepository.addPet(pet);
 //			SpecieBreed specieBreed = new SpecieBreed("Horse", "Arbian Home");
 //			specieBreedRepository.addSpecieBreed(specieBreed);
 //			Notification notification = new Notification();
@@ -60,11 +60,11 @@ public class Application {
 //			record.setPetId(4);
 //			record.setAdopterId(2);
 //			recordRepository.addRecord(record);
-			App application = new App();
-			application.setStatus("Wait");
-			application.setPetId(4);
-			application.setAdopterId(2);
-			applicationRepository.addRecord(application);
+//			App application = new App();
+//			application.setStatus("Wait");
+//			application.setPetId(4);
+//			application.setAdopterId(2);
+//			applicationRepository.addRecord(application);
 		};
 	}
 
