@@ -80,3 +80,39 @@ CREATE TABLE pet_document (
     pet_id INT,
     FOREIGN KEY (pet_id) REFERENCES pet(id)
 );
+DELIMITER //
+
+CREATE TRIGGER after_insert_pet
+AFTER INSERT
+ON pet FOR EACH ROW
+BEGIN
+    -- Insert into notification table
+    INSERT INTO notification (content, date)
+    VALUES (
+        CONCAT(
+            'A new pet, ', NEW.name, ', is added. ',
+            (SELECT specie FROM specie_breed WHERE breed = NEW.breed),
+            ', its age is ', NEW.age,
+            ', its gender is ', CASE WHEN NEW.gender = 1 THEN 'female' ELSE 'male' END,
+            ', its behaviour is ', NEW.behaviour,
+            ', its health_status is ', NEW.health_status,
+            ', it is ', CASE WHEN NEW.neutering = 0 THEN 'not ' ELSE '' END, 'neutered',
+            ', it took ', CASE WHEN NEW.vaccination = 0 THEN 'no' ELSE '' END, ' vaccinations.',
+            ' You could find it in shelter ', NEW.id_of_shelter,
+            ' ', (SELECT name FROM shelter WHERE id = NEW.id_of_shelter),
+            ' which is located in ', (SELECT location FROM shelter WHERE id = NEW.id_of_shelter)
+        ),
+        NOW() -- Current date and time
+    );
+
+    -- Get the ID of the last inserted notification
+    SET @last_notification_id = (SELECT LAST_INSERT_ID());
+
+    -- Insert into notification_adopter table for all adopters
+    INSERT INTO notification_adopter (id_of_notification, id_of_adopter)
+    SELECT @last_notification_id, id FROM adopter;
+END;
+
+//
+
+DELIMITER ;

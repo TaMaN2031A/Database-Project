@@ -1,10 +1,8 @@
 package com.example.demo.Model;
 
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -18,9 +16,10 @@ public class Pet {
     private int age;
     private int gender;
     private String behaviour;
-    private String healthState;
+    private String healthStatus;
     private int neutering;
     private int vaccination;
     private int idOfShelter;
+    private String description;
     private List<PetDocument> petDocuments;
 }
