@@ -99,8 +99,8 @@ BEGIN
             ', it is ', CASE WHEN NEW.neutering = 0 THEN 'not ' ELSE '' END, 'neutered',
             ', it took ', CASE WHEN NEW.vaccination = 0 THEN 'no' ELSE '' END, ' vaccinations.',
             ' You could find it in shelter ', NEW.id_of_shelter,
-            ' where ', (SELECT name FROM shelter WHERE id = NEW.id_of_shelter),
-            ' is located in ', (SELECT location FROM shelter WHERE id = NEW.id_of_shelter)
+            ' ', (SELECT name FROM shelter WHERE id = NEW.id_of_shelter),
+            ' which is located in ', (SELECT location FROM shelter WHERE id = NEW.id_of_shelter)
         ),
         NOW() -- Current date and time
     );
