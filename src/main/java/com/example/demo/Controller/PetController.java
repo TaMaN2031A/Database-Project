@@ -16,12 +16,18 @@ public class PetController {
     private PetService petService;
 
     @PostMapping("/add")
-    public ResponseEntity<Map<String, String>> addPet(@RequestBody Pet pet) {
+    public ResponseEntity<?> addPet(@RequestBody Pet pet) {
+        System.out.println("kimo");
         return petService.addPet(pet);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Map<String, String>> updatePet(@RequestBody Pet pet) {
+    public ResponseEntity<?> updatePet(@RequestBody Pet pet) {
         return petService.updatePet(pet);
+    }
+
+    @PostMapping("/delete/{petID}")
+    public ResponseEntity<?> deletePet(@PathVariable int petID) {
+        return petService.deletePet(petID);
     }
 }

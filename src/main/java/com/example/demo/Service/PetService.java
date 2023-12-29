@@ -15,10 +15,11 @@ public class PetService {
     @Autowired
     PetRepository petRepository;
 
-    public ResponseEntity<Map<String, String>> addPet(Pet pet) {
+    public ResponseEntity<?> addPet(Pet pet) {
 //        try {
-            petRepository.addPet(pet);
-            return new ResponseEntity<>(HttpStatus.OK);
+            Long id=petRepository.addPet(pet);
+            System.out.println(id);
+            return new ResponseEntity<>(id,HttpStatus.OK);
 //        /} catch (Exception e) {
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
@@ -26,10 +27,25 @@ public class PetService {
 
     public ResponseEntity<Map<String, String>> updatePet(Pet pet) {
         try {
+            System.out.println("up");
+            System.out.println(pet.toString());
+
             petRepository.updatePet(pet);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    public ResponseEntity<Map<String, String>> deletePet(int petID) {
+        try {
+
+            petRepository.deletePet(petID);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }

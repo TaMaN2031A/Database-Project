@@ -22,4 +22,21 @@ public class Pet {
     private int idOfShelter;
     private String description;
     private List<PetDocument> petDocuments;
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", breed='" + breed + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", behaviour='" + behaviour + '\'' +
+                ", healthStatus='" + healthStatus + '\'' +
+                ", neutering=" + neutering +
+                ", vaccination=" + vaccination +
+                ", idOfShelter=" + idOfShelter +
+                ", description='" + description + '\'' +
+                ", petDocuments=" + petDocuments +
+                '}';
+    }
 }

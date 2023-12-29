@@ -11,13 +11,23 @@ public class PetRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void addPet(Pet pet) {
+    public Long addPet(Pet pet) {
         String sql = "INSERT INTO pet (name, breed, age, gender, behaviour, health_status, description, neutering, vaccination, id_of_shelter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, pet.getName(), pet.getBreed(), pet.getAge(), pet.getGender(), pet.getBehaviour(), pet.getHealthStatus(), pet.getDescription(), pet.getNeutering(), pet.getVaccination(), pet.getIdOfShelter());
+
+        // Retrieve the last inserted ID
+        String selectLastIdSql = "SELECT LAST_INSERT_ID()";
+        return jdbcTemplate.queryForObject(selectLastIdSql, Long.class);
+
     }
 
     public void updatePet(Pet pet) {
+        System.out.println(pet.getID());
         String sql = "UPDATE pet SET name = ?, breed = ?, age = ?, gender = ?, behaviour = ?, health_status = ?, description = ?, neutering = ?, vaccination = ?, id_of_shelter = ? WHERE id = ?";
         jdbcTemplate.update(sql, pet.getName(), pet.getBreed(), pet.getAge(), pet.getGender(), pet.getBehaviour(), pet.getHealthStatus(), pet.getDescription(), pet.getNeutering(), pet.getVaccination(), pet.getIdOfShelter(), pet.getID());
+    }
+    public void deletePet(int petID) {
+        String sql = "DELETE FROM pet WHERE id = ?";
+        jdbcTemplate.update(sql, petID);
     }
 }
