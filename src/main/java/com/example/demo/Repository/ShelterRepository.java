@@ -15,4 +15,8 @@ public class ShelterRepository {
         String sql = "INSERT INTO shelter (name, contactInfo, location) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, shelter.getName(), shelter.getContactInfo(), shelter.getLocation());
     }
+    public void updateShelter(Shelter shelter) {
+        String sql = "UPDATE shelter SET name = ?, contactInfo = ?, location = ? WHERE id = ?";
+        jdbcTemplate.update(sql, shelter.getName(), shelter.getContactInfo(), shelter.getLocation(), shelter.getID());
+    }
 }
