@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,4 +22,5 @@ public class Pet {
     private int neutering;
     private int vaccination;
     private int idOfShelter;
+    private List<PetDocument> petDocuments;
 }

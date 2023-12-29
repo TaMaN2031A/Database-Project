@@ -73,3 +73,10 @@ CREATE TABLE record (
     FOREIGN KEY (adopter_id) REFERENCES adopter(id)
 );
 
+CREATE TABLE pet_document (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    document_type ENUM('IMAGE', 'MEDICAL_RECORD', 'OTHER'),
+    document_content BLOB,
+    pet_id INT,
+    FOREIGN KEY (pet_id) REFERENCES pet(id)
+);
