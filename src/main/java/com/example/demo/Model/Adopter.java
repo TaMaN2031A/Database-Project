@@ -1,32 +1,29 @@
 package com.example.demo.Model;
 
-import jdk.jfr.Enabled;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Builder
-public class Manager implements UserDetails {
-    private String userName;
+public class Adopter implements UserDetails {
     private String firstName;
     private String lastName;
     private String contactInfo;
     private String password;
+    private String userName;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("MANAGER"));
+        return List.of(new SimpleGrantedAuthority("ADOPTER"));
     }
     @Override
     public String getPassword() {

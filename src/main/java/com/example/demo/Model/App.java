@@ -11,5 +11,15 @@ public class App {
     private int id;
     private String status;
     private int petId;
-    private int adopterId;
+    private String adopterUserName;
+
+    @Override
+    public String toString() {
+        return "App{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", petId=" + petId +
+                ", adopterUserName='" + adopterUserName + '\'' +
+                '}';
+    }
 }

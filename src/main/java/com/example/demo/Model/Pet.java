@@ -17,9 +17,28 @@ public class Pet {
     private int gender;
     private String behaviour;
     private String healthStatus;
+    private String description;
     private int neutering;
     private int vaccination;
     private int idOfShelter;
-    private String description;
     private List<PetDocument> petDocuments;
+    private Boolean adopted;
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", breed='" + breed + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", behaviour='" + behaviour + '\'' +
+                ", healthStatus='" + healthStatus + '\'' +
+                ", description='" + description + '\'' +
+                ", neutering=" + neutering +
+                ", vaccination=" + vaccination +
+                ", idOfShelter=" + idOfShelter +
+                ", petDocuments=" + petDocuments +
+                 '}';
+    }
 }

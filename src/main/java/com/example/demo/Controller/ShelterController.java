@@ -10,19 +10,35 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/shelter")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class ShelterController {
 
     @Autowired
     private ShelterService shelterService;
 
     @PostMapping("/addShelter")
-    public ResponseEntity<Map<String, String>> addShelter(@RequestBody Shelter shelter) {
+    public ResponseEntity<?> addShelter(@RequestBody Shelter shelter) {
         return shelterService.addShelter(shelter);
     }
 
     @PostMapping("/updateShelter")
-    public ResponseEntity<Map<String, String>> updateShelter(@RequestBody Shelter shelter) {
+    public ResponseEntity<?> updateShelter(@RequestBody Shelter shelter) {
         return shelterService.updateShelter(shelter);
+    }
+    @PostMapping("/deleteShelter/{shelter_id}")
+    public ResponseEntity<?> deleteShelter(@PathVariable int shelter_id) {
+        return shelterService.deleteShelter(shelter_id);
+    }
+    @GetMapping("/getShelter")
+    public ResponseEntity<?> getShelter() {
+        return shelterService.getShelters();
+    }
+
+
+    @GetMapping("/name/{staffUserName}")
+    public int getShelterNameByStaffUserName(@PathVariable String staffUserName){
+        System.out.println(shelterService.getShelterNameByStaffUserName(staffUserName));
+        return  shelterService.getShelterNameByStaffUserName(staffUserName);
     }
 
 }

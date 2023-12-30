@@ -10,4 +10,12 @@ import lombok.NoArgsConstructor;
 public class SpecieBreed {
     private String specie;
     private String breed;
+
+    @Override
+    public String toString() {
+        return "SpecieBreed{" +
+                "specie='" + specie + '\'' +
+                ", breed='" + breed + '\'' +
+                '}';
+    }
 }
