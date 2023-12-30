@@ -4,7 +4,10 @@ import com.example.demo.Enum.DocumentType;
 import com.example.demo.Model.PetDocument;
 import com.example.demo.Service.PetDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,9 +18,27 @@ public class PetDocumentController {
     @Autowired
     private PetDocumentService petDocumentService;
 
-    @PostMapping
-    public void savePetDocument(@RequestBody PetDocument petDocument) {
-        petDocumentService.savePetDocument(petDocument);
+    @PostMapping("/upload")
+    public ResponseEntity<String> savePetDocument(
+            @RequestPart("file") MultipartFile file,
+            @RequestPart("petId") int petId,
+            @RequestPart("fileType") DocumentType documentType
+
+    ) {
+        try {
+            // Validate and process the uploaded file
+            PetDocument petDocument = new PetDocument();
+            petDocument.setDocumentContent(file.getBytes());
+            petDocument.setPetId(petId);
+            petDocument.setDocumentType(documentType);
+
+            // Save information to the database using petDocumentService
+            petDocumentService.savePetDocument(petDocument);
+
+            return ResponseEntity.ok("File uploaded successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading file");
+        }
     }
 
     @GetMapping("/{id}")

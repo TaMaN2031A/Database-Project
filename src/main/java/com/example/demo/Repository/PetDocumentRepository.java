@@ -5,6 +5,7 @@ import com.example.demo.Model.PetDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.SqlLobValue;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,8 +16,10 @@ public class PetDocumentRepository {
     private JdbcTemplate jdbcTemplate;
     public void savePetDocument(PetDocument petDocument) {
         String sql = "INSERT INTO pet_document (document_type, document_content, pet_id) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, petDocument.getDocumentType().name(), petDocument.getDocumentContent(), petDocument.getPetId());
+        SqlLobValue lobValue = new SqlLobValue(petDocument.getDocumentContent());
+        jdbcTemplate.update(sql, petDocument.getDocumentType().name(), lobValue, petDocument.getPetId());
     }
+
 
     public PetDocument getPetDocumentById(int id) {
         String sql = "SELECT * FROM pet_document WHERE id = ?";
@@ -42,6 +45,7 @@ public class PetDocumentRepository {
         String sql = "SELECT * FROM pet_document WHERE pet_id = ? AND document_type = 'IMAGE'";
         return jdbcTemplate.query(sql, new Object[]{petId}, new BeanPropertyRowMapper<>(PetDocument.class));
     }
+
 
     public List<PetDocument> getDocumentsByTypeAndPetId(int petId, DocumentType documentType) {
         String sql = "SELECT * FROM pet_document WHERE pet_id = ? AND document_type = ?";

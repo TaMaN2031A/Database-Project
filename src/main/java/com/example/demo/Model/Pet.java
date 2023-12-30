@@ -22,4 +22,5 @@ public class Pet {
     private int vaccination;
     private int idOfShelter;
     private List<PetDocument> petDocuments;
+    private boolean adopted;
 }
