@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/app")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class AppController {
 
     @Autowired
@@ -19,6 +20,7 @@ public class AppController {
 
     @PostMapping("/add")
     public ResponseEntity<Map<String, String>> addApp(@RequestBody App app) {
+        System.out.println(app.toString());
         return appService.addApp(app);
     }
 

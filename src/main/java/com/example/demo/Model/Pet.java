@@ -22,4 +22,23 @@ public class Pet {
     private int vaccination;
     private int idOfShelter;
     private List<PetDocument> petDocuments;
+    private Boolean adopted;
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", breed='" + breed + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", behaviour='" + behaviour + '\'' +
+                ", healthStatus='" + healthStatus + '\'' +
+                ", description='" + description + '\'' +
+                ", neutering=" + neutering +
+                ", vaccination=" + vaccination +
+                ", idOfShelter=" + idOfShelter +
+                ", petDocuments=" + petDocuments +
+                 '}';
+    }
 }

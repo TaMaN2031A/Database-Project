@@ -13,13 +13,15 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/notification")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class NotificationController {
 
     @Autowired
     private NotificationService notificationService;
 
-    @GetMapping("/get/{userName}")
+    @GetMapping("/get_notification/{userName}")
     public List<Notification> getNotification(@PathVariable String userName) {
+        System.out.println(userName);
         return notificationService.getAll(userName);
     }
 

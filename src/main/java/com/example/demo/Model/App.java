@@ -12,4 +12,14 @@ public class App {
     private String status;
     private int petId;
     private String adopterUserName;
+
+    @Override
+    public String toString() {
+        return "App{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", petId=" + petId +
+                ", adopterUserName='" + adopterUserName + '\'' +
+                '}';
+    }
 }
